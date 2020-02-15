@@ -5,6 +5,7 @@
  *      Author: laplace
  */
 
+#include <stdint.h>
 #include <string.h>
 
 
@@ -84,6 +85,12 @@ typedef struct {
 /*
  * Serialize the rocket packet for transmission.
  */
-unsigned int serialize_rocket_packet(RocketPacket* pkt, uint8_t* s);
+unsigned int serialize_rocket_packet(RocketPacket* pkt, uint8_t* dst);
+
+unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst);
+
+unsigned int serialize_motor_data(MotorData* data, uint8_t* dst);
+
+unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst);
 
 #endif /* _ROCKET_PACKET_H_ */
