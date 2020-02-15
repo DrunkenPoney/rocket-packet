@@ -73,6 +73,14 @@ typedef struct {
 } RocketPacket;
 
 
+typedef struct {
+	uint16_t start_char;
+	uint8_t function;
+	uint8_t arg;
+	uint16_t crc;
+} CommandPacket;
+
+
 /*
  * Serialize the rocket packet for transmission.
  */
