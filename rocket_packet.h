@@ -16,6 +16,8 @@
 #define ROCKET_PACKET_SIZE 92
 #define ROCKET_PACKET_START 's'
 
+#define COMMAND_START 0xface
+
 
 typedef struct {
 	/* time since boot in milliseconds */
