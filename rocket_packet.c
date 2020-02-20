@@ -2,7 +2,7 @@
  * rocket_packet.c
  *
  *  Created on: Nov 1, 2018
- *      Author: laplace
+ *	  Author: laplace
  */
 
 #include "rocket_packet.h"
@@ -11,7 +11,7 @@ unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
 	/*
 	 * copy the rocket packet struct into the destination char array
 	 */
-    size_t i;
+	size_t i;
 	size_t offset = 0;
 	char start_char = ROCKET_PACKET_START;
 
@@ -67,19 +67,38 @@ unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
 }
 
 unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst) {
-    unsigned int offset = 0;
-    
-    memcpy(dst + offset, (void *) &pkt->start_char, 2);
-    offset += 2;
-    
-    memcpy(dst + offset, (void *) &pkt->function, 1);
-    offset += 1;
-    
-    memcpy(dst + offset, (void *) &pkt->arg, 1);
-    offset += 1;
-    
-    memcpy(dst + offset, (void *) &pkt->crc, 2);
-    offset += 2;
-    
-    return offset;
+	unsigned int offset = 0;
+	
+	memcpy(dst + offset, (void *) &pkt->start_char, 2);
+	offset += 2;
+	
+	memcpy(dst + offset, (void *) &pkt->function, 1);
+	offset += 1;
+	
+	memcpy(dst + offset, (void *) &pkt->arg, 1);
+	offset += 1;
+	
+	memcpy(dst + offset, (void *) &pkt->crc, 2);
+	offset += 2;
+	
+	return offset;
+}
+
+
+unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src) {
+	unsigned int offset = 0;
+
+	memcpy((void *) &pkt->start_char, src + offset, 2);
+	offset += 2;
+
+	memcpy((void *) &pkt->function, src + offset, 1);
+	offset += 1;
+
+	memcpy((void *) &pkt->arg, src + offset, 1);
+	offset += 1;
+
+	memcpy((void *) &pkt->crc, src + offset, 2);
+	offset += 2;
+
+	return offset;
 }

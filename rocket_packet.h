@@ -95,4 +95,6 @@ unsigned int serialize_motor_data(MotorData* data, uint8_t* dst);
 
 unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst);
 
+unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src);
+
 #endif /* _ROCKET_PACKET_H_ */
