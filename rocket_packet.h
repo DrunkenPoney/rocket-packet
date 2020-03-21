@@ -58,7 +58,6 @@ typedef struct {
 	int16_t z_gyro;
 } AvionicsData;
 
-
 typedef struct {
 	/* TODO: fix types and array sizes */
 	uint8_t valve_states[5];
@@ -67,7 +66,6 @@ typedef struct {
 	uint16_t piezoelectric;
 } MotorData;
 
-
 typedef struct {
 	AvionicsData avionics_data;
 	MotorData motor_data;
@@ -75,14 +73,21 @@ typedef struct {
 	uint16_t crc;
 } RocketPacket;
 
-
 typedef struct {
-	uint16_t start_char;
+	uint16_t start_short;
+	uint16_t id;
 	uint8_t function;
 	uint8_t arg;
 	uint16_t crc;
 } CommandPacket;
 
+typedef struct {
+	uint16_t start_short;
+	uint16_t id;
+	uint8_t ack;
+	uint8_t nack;
+	uint16_t crc;
+} AckPacket;
 
 /*
  * Serialize the rocket packet for transmission.
