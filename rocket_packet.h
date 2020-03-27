@@ -58,7 +58,6 @@ typedef struct {
 	int16_t z_gyro;
 } AvionicsData;
 
-
 typedef struct {
 	/* TODO: fix types and array sizes */
 	uint8_t valve_states[5];
@@ -67,7 +66,6 @@ typedef struct {
 	uint16_t piezoelectric;
 } MotorData;
 
-
 typedef struct {
 	AvionicsData avionics_data;
 	MotorData motor_data;
@@ -75,25 +73,50 @@ typedef struct {
 	uint16_t crc;
 } RocketPacket;
 
-
 typedef struct {
-	uint16_t start_char;
+	uint16_t start_short;
+	uint16_t id;
 	uint8_t function;
 	uint8_t arg;
 	uint16_t crc;
 } CommandPacket;
 
+typedef struct {
+	uint16_t start_short;
+	uint16_t id;
+	uint8_t ack;
+	uint8_t padd[3];
+	uint16_t *crc;
+	uint8_t *padd[2];
+} AckPacket;
+
+unsigned char data[7];
+ack.crc = &data[5];
+compute_crc(data)
+*ack.crc  == data[5, 6]
+
+reg[72]
+
+float* x;
+x = reg[53];
+
+
+
 
 /*
  * Serialize the rocket packet for transmission.
  */
-unsigned int serialize_rocket_packet(RocketPacket* pkt, uint8_t* dst);
+unsigned int pack_rocket_packet(RocketPacket* pkt, uint8_t* dst);
 
-unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst);
+unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst);
 
-unsigned int serialize_motor_data(MotorData* data, uint8_t* dst);
+unsigned int pack_motor_data(MotorData* data, uint8_t* dst);
 
-unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst);
+unsigned int pack_command_packet(CommandPacket* pkt, uint8_t* dst);
+
+unsigned int pack_ack_packet(AckPacket* pkt, uint8_t* dst);
+
+unsigned int unpack_ack_packet(AckPacket* pkt, uint8_t* src);
 
 unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src);
 

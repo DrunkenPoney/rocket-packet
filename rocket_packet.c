@@ -7,7 +7,7 @@
 
 #include "rocket_packet.h"
 
-unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
+unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst) {
 	/*
 	 * copy the rocket packet struct into the destination char array
 	 */
@@ -66,20 +66,23 @@ unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
 	return offset;
 }
 
-unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst) {
+unsigned int pack_command_packet(CommandPacket* pkt, uint8_t* dst) {
 	unsigned int offset = 0;
 	
-	memcpy(dst + offset, (void *) &pkt->start_char, 2);
-	offset += 2;
+	memcpy(dst + offset, (void *) &pkt->start_short, sizeof(pkt->start_short));
+	offset += sizeof(pkt->start_short);
+
+	memcpy(dst + offset, (void *) &pkt->id, sizeof(pkt->id));
+	offset += sizeof(pkt->id);
 	
-	memcpy(dst + offset, (void *) &pkt->function, 1);
-	offset += 1;
+	memcpy(dst + offset, (void *) &pkt->function, sizeof(pkt->function));
+	offset += sizeof(pkt->function);
 	
-	memcpy(dst + offset, (void *) &pkt->arg, 1);
-	offset += 1;
+	memcpy(dst + offset, (void *) &pkt->arg, sizeof(pkt->arg));
+	offset += sizeof(pkt->arg);
 	
-	memcpy(dst + offset, (void *) &pkt->crc, 2);
-	offset += 2;
+	memcpy(dst + offset, (void *) &pkt->crc, sizeof(pkt->crc));
+	offset += sizeof(pkt->crc);
 	
 	return offset;
 }
@@ -88,17 +91,63 @@ unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst) {
 unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src) {
 	unsigned int offset = 0;
 
-	memcpy((void *) &pkt->start_char, src + offset, 2);
-	offset += 2;
+	memcpy((void *) &pkt->start_short, src + offset, sizeof(pkt->start_short));
+	offset += sizeof(pkt->start_short);
 
-	memcpy((void *) &pkt->function, src + offset, 1);
-	offset += 1;
+	memcpy((void *) &pkt->id, src + offset, sizeof(pkt->id));
+	offset += sizeof(pkt->id);
 
-	memcpy((void *) &pkt->arg, src + offset, 1);
-	offset += 1;
+	memcpy((void *) &pkt->function, src + offset, sizeof(pkt->function));
+	offset += sizeof(pkt->function);
 
-	memcpy((void *) &pkt->crc, src + offset, 2);
-	offset += 2;
+	memcpy((void *) &pkt->arg, src + offset, sizeof(pkt->arg));
+	offset += sizeof(pkt->arg);
+
+	memcpy((void *) &pkt->crc, src + offset, sizeof(pkt->crc));
+	offset += sizeof(pkt->crc);
+
+	return offset;
+}
+
+unsigned int pack_ack_packet(AckPacket* pkt, uint8_t* dst) {
+	unsigned int offset = 0;
+	
+	memcpy(dst + offset, (void *) &pkt->start_short, sizeof(pkt->start_short));
+	offset += sizeof(pkt->start_short);
+
+	memcpy(dst + offset, (void *) &pkt->id, sizeof(pkt->id));
+	offset += sizeof(pkt->id);
+	
+	memcpy(dst + offset, (void *) &pkt->ack, sizeof(pkt->ack));
+	offset += sizeof(pkt->ack);
+	
+	memcpy(dst + offset, (void *) &pkt->nack, sizeof(pkt->nack));
+	offset += sizeof(pkt->nack);
+	
+	memcpy(dst + offset, (void *) &pkt->crc, sizeof(pkt->crc));
+	offset += sizeof(pkt->crc);
+	
+	return offset;
+}
+
+
+unsigned int unpack_ack_packet(AckPacket* pkt, uint8_t* src) {
+	unsigned int offset = 0;
+
+	memcpy((void *) &pkt->start_short, src + offset, sizeof(pkt->start_short));
+	offset += sizeof(pkt->start_short);
+
+	memcpy((void *) &pkt->id, src + offset, sizeof(pkt->id));
+	offset += sizeof(pkt->id);
+
+	memcpy((void *) &pkt->ack, src + offset, sizeof(pkt->ack));
+	offset += sizeof(pkt->ack);
+
+	memcpy((void *) &pkt->nack, src + offset, sizeof(pkt->nack));
+	offset += sizeof(pkt->nack);
+
+	memcpy((void *) &pkt->crc, src + offset, sizeof(pkt->crc));
+	offset += sizeof(pkt->crc);
 
 	return offset;
 }
