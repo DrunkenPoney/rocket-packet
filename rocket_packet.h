@@ -85,20 +85,38 @@ typedef struct {
 	uint16_t start_short;
 	uint16_t id;
 	uint8_t ack;
-	uint8_t nack;
-	uint16_t crc;
+	uint8_t padd[3];
+	uint16_t *crc;
+	uint8_t *padd[2];
 } AckPacket;
+
+unsigned char data[7];
+ack.crc = &data[5];
+compute_crc(data)
+*ack.crc  == data[5, 6]
+
+reg[72]
+
+float* x;
+x = reg[53];
+
+
+
 
 /*
  * Serialize the rocket packet for transmission.
  */
-unsigned int serialize_rocket_packet(RocketPacket* pkt, uint8_t* dst);
+unsigned int pack_rocket_packet(RocketPacket* pkt, uint8_t* dst);
 
-unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst);
+unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst);
 
-unsigned int serialize_motor_data(MotorData* data, uint8_t* dst);
+unsigned int pack_motor_data(MotorData* data, uint8_t* dst);
 
-unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst);
+unsigned int pack_command_packet(CommandPacket* pkt, uint8_t* dst);
+
+unsigned int pack_ack_packet(AckPacket* pkt, uint8_t* dst);
+
+unsigned int unpack_ack_packet(AckPacket* pkt, uint8_t* src);
 
 unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src);
 

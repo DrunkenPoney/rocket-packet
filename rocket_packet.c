@@ -7,16 +7,16 @@
 
 #include "rocket_packet.h"
 
-unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
+unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst) {
 	/*
 	 * copy the rocket packet struct into the destination char array
 	 */
 	size_t i;
 	size_t offset = 0;
-	char start_short = ROCKET_PACKET_START;
+	char start_char = ROCKET_PACKET_START;
 
 	// start char
-	memcpy(dst + offset, (void *) &start_short, sizeof(char));
+	memcpy(dst + offset, (void *) &start_char, sizeof(char));
 	offset += sizeof(char);
 	// timestamp
 	memcpy(dst + offset, (void *) &data->timestamp, sizeof(data->timestamp));
@@ -66,7 +66,7 @@ unsigned int serialize_avionics_data(AvionicsData* data, uint8_t* dst) {
 	return offset;
 }
 
-unsigned int serialize_command_packet(CommandPacket* pkt, uint8_t* dst) {
+unsigned int pack_command_packet(CommandPacket* pkt, uint8_t* dst) {
 	unsigned int offset = 0;
 	
 	memcpy(dst + offset, (void *) &pkt->start_short, sizeof(pkt->start_short));
@@ -109,7 +109,7 @@ unsigned int unpack_command_packet(CommandPacket* pkt, uint8_t* src) {
 	return offset;
 }
 
-unsigned int serialize_ack_packet(AckPacket* pkt, uint8_t* dst) {
+unsigned int pack_ack_packet(AckPacket* pkt, uint8_t* dst) {
 	unsigned int offset = 0;
 	
 	memcpy(dst + offset, (void *) &pkt->start_short, sizeof(pkt->start_short));
