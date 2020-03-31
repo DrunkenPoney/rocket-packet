@@ -85,9 +85,7 @@ typedef struct {
 	uint16_t start_short;
 	uint16_t id;
 	uint8_t ack;
-	uint8_t padd[3];
 	uint16_t *crc;
-	uint8_t *padd[2];
 } AckPacket;
 
 

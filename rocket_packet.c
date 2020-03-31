@@ -11,7 +11,6 @@ unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst) {
 	/*
 	 * copy the rocket packet struct into the destination char array
 	 */
-	size_t i;
 	size_t offset = 0;
 	char start_char = ROCKET_PACKET_START;
 
@@ -63,6 +62,7 @@ unsigned int pack_avionics_data(AvionicsData* data, uint8_t* dst) {
 	offset += sizeof(data->y_gyro);
 	memcpy(dst + offset, (void *) &data->z_gyro, sizeof(data->z_gyro));
 	offset += sizeof(data->z_gyro);
+
 	return offset;
 }
 
@@ -121,9 +121,6 @@ unsigned int pack_ack_packet(AckPacket* pkt, uint8_t* dst) {
 	memcpy(dst + offset, (void *) &pkt->ack, sizeof(pkt->ack));
 	offset += sizeof(pkt->ack);
 	
-	memcpy(dst + offset, (void *) &pkt->nack, sizeof(pkt->nack));
-	offset += sizeof(pkt->nack);
-	
 	memcpy(dst + offset, (void *) &pkt->crc, sizeof(pkt->crc));
 	offset += sizeof(pkt->crc);
 	
@@ -142,9 +139,6 @@ unsigned int unpack_ack_packet(AckPacket* pkt, uint8_t* src) {
 
 	memcpy((void *) &pkt->ack, src + offset, sizeof(pkt->ack));
 	offset += sizeof(pkt->ack);
-
-	memcpy((void *) &pkt->nack, src + offset, sizeof(pkt->nack));
-	offset += sizeof(pkt->nack);
 
 	memcpy((void *) &pkt->crc, src + offset, sizeof(pkt->crc));
 	offset += sizeof(pkt->crc);
