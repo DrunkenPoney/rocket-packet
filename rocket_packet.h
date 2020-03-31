@@ -90,18 +90,6 @@ typedef struct {
 	uint8_t *padd[2];
 } AckPacket;
 
-unsigned char data[7];
-ack.crc = &data[5];
-compute_crc(data)
-*ack.crc  == data[5, 6]
-
-reg[72]
-
-float* x;
-x = reg[53];
-
-
-
 
 /*
  * Serialize the rocket packet for transmission.
