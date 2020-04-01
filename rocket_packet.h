@@ -18,6 +18,9 @@
 
 #define COMMAND_START 0xface
 
+#define ACK 0x01
+#define NACK 0xff
+
 
 typedef struct {
 	/* time since boot in milliseconds */
