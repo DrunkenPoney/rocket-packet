@@ -12,9 +12,19 @@
 #ifndef _ROCKET_PACKET_H_
 #define _ROCKET_PACKET_H_
 
-/* size of the packet including the crc */
-#define ROCKET_PACKET_SIZE 92
 #define ROCKET_PACKET_START 's'
+
+#define ACK_PACKET_SIZE 7
+
+#define CMD_PACKET_SIZE 8
+
+#define AVIONICS_DATA_SIZE 76
+
+#define MOTOR_DATA_SIZE 18
+
+#define ROCKET_PACKET_SIZE (AVIONICS_DATA_SIZE \
+                            + MOTOR_DATA_SIZE \
+                            + 3)
 
 #define COMMAND_START 0xface
 
@@ -88,7 +98,7 @@ typedef struct {
 	uint16_t start_short;
 	uint16_t id;
 	uint8_t ack;
-	uint16_t *crc;
+	uint16_t crc;
 } AckPacket;
 
 
