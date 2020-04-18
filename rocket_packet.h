@@ -75,7 +75,7 @@ typedef struct {
 	/* TODO: fix types and array sizes */
 	uint8_t valve_states[5];
 	uint8_t piston_state;
-	uint16_t manometers[5];
+	uint16_t manometers[4];
 	uint16_t piezoelectric;
 } MotorData;
 
