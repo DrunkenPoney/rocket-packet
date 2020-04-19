@@ -2,11 +2,13 @@
  * rocket_packet.h
  *
  *  Created on: Nov 1, 2018
- *      Author: laplace
+ *	  Author: laplace
  */
 
 #include <stdint.h>
 #include <string.h>
+
+#include "motor_command.h"
 
 
 #ifndef _ROCKET_PACKET_H_
@@ -20,11 +22,14 @@
 
 #define AVIONICS_DATA_SIZE 76
 
-#define MOTOR_DATA_SIZE 18
+#define MANOMETERS_NUM 4
+#define MOTOR_DATA_SIZE (ACTUATORS_NUM \
+						+ (4 * MANOMETERS_NUM) \
+						+ 2)
 
 #define ROCKET_PACKET_SIZE (AVIONICS_DATA_SIZE \
-                            + MOTOR_DATA_SIZE \
-                            + 3)
+							+ MOTOR_DATA_SIZE \
+							+ 3)
 
 #define COMMAND_START 0xface
 
@@ -72,10 +77,8 @@ typedef struct {
 } AvionicsData;
 
 typedef struct {
-	/* TODO: fix types and array sizes */
-	uint8_t valve_states[5];
-	uint8_t piston_state;
-	uint16_t manometers[4];
+	unsigned char actuator_states[ACTUATORS_NUM];
+	int manometers[MANOMETERS_NUM];
 	uint16_t piezoelectric;
 } MotorData;
 
