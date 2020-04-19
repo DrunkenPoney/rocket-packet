@@ -25,6 +25,7 @@
 #define MC_SET_STATES 5
 
 /* actuators id numbers */
+#define ACTUATORS_NUM 6
 #define VALVE_A 0
 #define VALVE_B 1
 #define VALVE_C 2
