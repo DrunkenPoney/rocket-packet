@@ -109,7 +109,7 @@ characteristics:
 	the rocket-packet repo as a submodule and obey its implementation of the
 	structures. I still think this makes sense to a degree, but feel free to
 	make it better if you have a better idea (email
-	[me](maxime_glmt@hotmail.ca), I'd be glad to hear about it).
+	me at maxime_glmt@hotmail.ca), I'd be glad to hear about it).
 - The `start a sequence` function could be replaced by just using the other
 	functions. This might be safer as it gives the opportunity to see the
 	effects of the changes before changing another actuator.
