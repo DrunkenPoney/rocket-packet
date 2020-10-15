@@ -32,6 +32,7 @@
 
 #define ROCKET_PACKET_START 's'
 #define COMMAND_START 0xface
+#define ACK_START COMMAND_START
 
 #define ACK 0x01
 #define NACK 0xff
