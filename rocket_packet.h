@@ -45,6 +45,7 @@ struct __attribute__ ((packed)) {
 	double longitude;
 	char NSIndicator;
 	char EWIndicator;
+	char nsatellites;
 	/* 10DOF values */
 	/* BMP180 */
 	float altitude;
