@@ -1,12 +1,16 @@
 #include "motor_command.h"
 
 
-int mc_valid_function(int function) {
+int
+mc_valid_function(int function)
+{
 	return (0 <= function) && (function <= MC_SET_STATES);
 }
 
 
-int mc_valid_arg(int function, int arg) {
+int
+mc_valid_arg(int function, int arg)
+{
 	int valid;
 
 	switch (function) {
