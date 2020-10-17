@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "motor_command.h"
+#include "mcu_command.h"
 
 
 #ifndef _ROCKET_PACKET_H_
@@ -38,7 +38,7 @@
 #define NACK 0xff
 
 
-struct __attribute__ ((packed)) {
+struct __attribute__ ((packed)) AvionicsData {
 	/* time since boot in milliseconds */
 	double timestamp;
 	/* GPS values */
@@ -65,7 +65,7 @@ struct __attribute__ ((packed)) {
 	int16_t z_gyro;
 } AvionicsData;
 
-struct __attribute__ ((packed)) {
+struct __attribute__ ((packed)) MotorData {
 	unsigned char actuator_states[ACTUATORS_NUM];
 	int manometers[MANOMETERS_NUM];
 	uint16_t piezoelectric;
@@ -73,8 +73,8 @@ struct __attribute__ ((packed)) {
 
 struct __attribute__ ((packed)) {
 	char start_char;
-	AvionicsData avionics_data;
-	MotorData motor_data;
+	struct AvionicsData avionics_data;
+	struct MotorData motor_data;
 	uint16_t crc;
 } RocketPacket;
 
