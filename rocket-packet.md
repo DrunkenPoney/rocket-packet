@@ -3,9 +3,9 @@
 ## <u>Details</u>
 
 ### Sizes
-__Total packet size:__ _avionic_size + motor_size + 4 =_ <u>104 bytes</u><br>
+__Total packet size:__ _avionic_size + motor_size + 4 =_ <u>85 bytes</u><br>
 __Motor data size:__ _actuators + (4 * manometers) + 2 =_ <u>24 bytes</u><br>
-__Avionic data size:__ <u>76 bytes</u><br>
+__Avionic data size:__ <u>57 bytes</u><br>
 
 ### Other
 __Number of actuators:__ 6<br>
