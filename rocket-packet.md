@@ -16,6 +16,7 @@ __Number of manometers:__ 4<br>
 |  #  | name | Sensor | Unit | Data Type | Bytes | Description |
 |:---:|:----:|:------:|:----:|:---------:|:-----:| ----------- |
 | 0 | `start_short` | <hr> | <hr> | `char` | 1 | Packet type identifier |
+| <hr> | <u>__Avionic__</u> | <hr> | <hr> | <hr> | <hr> | <hr> |
 | 1 | `timestamp` | <hr> | _ms_ | `unsigned`<br>`long` | 8 | Time since boot in milliseconds |
 | 2 | `latitude` | GPS | _°_ | `double` | 8 | todo |
 | 3 | `longitude` | GPS | _°_ | `double` | 8 | todo |
