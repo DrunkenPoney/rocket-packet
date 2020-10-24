@@ -49,6 +49,6 @@ __Number of manometers:__ 4<br>
 | <hr> | <u>__Checksum__</u> | <hr> | <hr> | <hr> | <hr> | <hr> |
 | 21 | `crc` | <hr> | <hr> | `uint16` | 2 | CRC Checksum |
 
-[BMP180]:(https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf)
-[LSM303]:(https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF)
-[L3GD20]:(https://www.st.com/resource/ja/application_note/dm00119036-l3gd20-3-axis-digital-output-gyroscope-stmicroelectronics.pdf)
+[BMP180]:https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf
+[LSM303]:https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF
+[L3GD20]:https://www.st.com/resource/ja/application_note/dm00119036-l3gd20-3-axis-digital-output-gyroscope-stmicroelectronics.pdf
