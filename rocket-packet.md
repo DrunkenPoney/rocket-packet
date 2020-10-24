@@ -31,9 +31,9 @@ __Number of manometers:__ 4<br>
 | 13 | `mag_x` | [LSM303][LSM303] | _?_ | `int16` | 2 | todo |
 | 14 | `mag_y` | [LSM303][LSM303] | _?_ | `int16` | 2 | todo |
 | 15 | `mag_z` | [LSM303][LSM303] | _?_ | `int16` | 2 | todo |
-| 16 | `x_gyro` | [L3DG20][L3GD20] | _?_ | `int16` | 2 | todo |
-| 17 | `y_gyro` | [L3DG20][L3GD20] | _?_ | `int16` | 2 | todo |
-| 18 | `z_gyro` | [L3DG20][L3GD20] | _?_ | `int16` | 2 | todo |
+| 16 | `x_gyro` | [L3DG20][L3GD20] | _°/sec_ | `int16` | 2 | Angular speed in degrees per second |
+| 17 | `y_gyro` | [L3DG20][L3GD20] | _°/sec_ | `int16` | 2 | Angular speed in degrees per second |
+| 18 | `z_gyro` | [L3DG20][L3GD20] | _°/sec_ | `int16` | 2 | Angular speed in degrees per second |
 | <hr> | <u>__Motor__</u> | <hr> | <hr> | <hr> | <hr> | <hr> |
 | 19 | `actuator_state_1` | <hr> | _0/1_ | `uint8` | 1 | todo |
 | 20 | `actuator_state_2` | <hr> | _0/1_ | `uint8` | 1 | todo |
