@@ -35,12 +35,12 @@ __Number of manometers:__ 4<br>
 | 17 | `y_gyro` | [L3DG20][L3GD20] | _°/sec_ | `int16` | 2 | Angular speed in degrees per second |
 | 18 | `z_gyro` | [L3DG20][L3GD20] | _°/sec_ | `int16` | 2 | Angular speed in degrees per second |
 | <hr> | <u>__Motor__</u> | <hr> | <hr> | <hr> | <hr> | <hr> |
-| 19 | `actuator_state_1` | <hr> | _0/1_ | `uint8` | 1 | todo |
-| 20 | `actuator_state_2` | <hr> | _0/1_ | `uint8` | 1 | todo |
-| 21 | `actuator_state_3` | <hr> | _0/1_ | `uint8` | 1 | todo |
-| 22 | `actuator_state_4` | <hr> | _0/1_ | `uint8` | 1 | todo |
-| 23 | `actuator_state_5` | <hr> | _0/1_ | `uint8` | 1 | todo |
-| 24 | `actuator_state_6` | <hr> | _0/1_ | `uint8` | 1 | todo |
+| 19 | `actuator_state_1` | <hr> | _0/1_ | `uint8` | 1 | State of valve 1 (open/closed) |
+| 20 | `actuator_state_2` | <hr> | _0/1_ | `uint8` | 1 | State of valve 2 (open/closed) |
+| 21 | `actuator_state_3` | <hr> | _0/1_ | `uint8` | 1 | State of valve 3 (open/closed) |
+| 22 | `actuator_state_4` | <hr> | _0/1_ | `uint8` | 1 | State of valve 4 (open/closed) |
+| 23 | `actuator_state_5` | <hr> | _0/1_ | `uint8` | 1 | State of valve 5 (open/closed) |
+| 24 | `actuator_state_6` | <hr> | _0/1_ | `uint8` | 1 | State of valve 6 (open/closed) |
 | 20 | `manometer_1` | ??? | _?_ | `int` | 4 | todo |
 | 20 | `manometer_2` | ??? | _?_ | `int` | 4 | todo |
 | 20 | `manometer_3` | ??? | _?_ | `int` | 4 | todo |
