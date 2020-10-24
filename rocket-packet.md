@@ -3,7 +3,7 @@
 ## <u>Details</u>
 
 ### Sizes
-__Total packet size:__ _avionic_size + motor_size + 3 =_ <u>103 bytes</u><br>
+__Total packet size:__ _avionic_size + motor_size + 4 =_ <u>104 bytes</u><br>
 __Motor data size:__ _actuators + (4 * manometers) + 2 =_ <u>24 bytes</u><br>
 __Avionic data size:__ <u>76 bytes</u><br>
 
@@ -15,7 +15,7 @@ __Number of manometers:__ 4<br>
 
 |  #  | name | Sensor | Unit | Data Type | Bytes | Description |
 |:---:|:----:|:------:|:----:|:---------:|:-----:| ----------- |
-| 0 | `start_short` | <hr> | <hr> | `char` | 1 | Packet type identifier |
+| 0 | `start_short` | <hr> | <hr> | `uint16` | 2 | Packet type identifier |
 | <hr> | <u>__Avionic__</u> | <hr> | <hr> | <hr> | <hr> | <hr> |
 | 1 | `timestamp` | <hr> | _ms_ | `unsigned`<br>`long` | 8 | Time since boot in milliseconds |
 | 2 | `latitude` | GPS | _°_ | `double` | 8 | todo |
