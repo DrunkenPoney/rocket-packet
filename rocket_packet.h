@@ -40,13 +40,13 @@
 
 struct __attribute__ ((packed)) AvionicsData {
 	/* time since boot in milliseconds */
-	double timestamp;
+	unsigned long timestamp;
 	/* GPS values */
 	double latitude;
 	double longitude;
 	char NSIndicator;
 	char EWIndicator;
-	char nsatellites;
+	uint8_t nsatellites;
 	/* 10DOF values */
 	/* BMP180 */
 	float altitude;
@@ -72,7 +72,7 @@ struct __attribute__ ((packed)) MotorData {
 } MotorData;
 
 struct __attribute__ ((packed)) {
-	char start_char;
+	uint16_t start_char;
 	struct AvionicsData avionics_data;
 	struct MotorData motor_data;
 	uint16_t crc;
