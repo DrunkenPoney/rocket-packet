@@ -17,8 +17,8 @@ __Number of manometers:__ 4<br>
 |:---:|:----:|:------:|:----:|:---------:|:-----:| ----------- |
 | 0 | `start_short` | <hr> | <hr> | `char` | 1 | Packet type identifier |
 | 1 | `timestamp` | <hr> | _ms_ | `unsigned`<br>`long` | 8 | Time since boot in milliseconds |
-| 2 | `latitude` | GPS | _?_ | `double` | 8 | todo |
-| 3 | `longitude` | GPS | _?_ | `double` | 8 | todo |
+| 2 | `latitude` | GPS | _°_ | `double` | 8 | todo |
+| 3 | `longitude` | GPS | _°_ | `double` | 8 | todo |
 | 4 | `NSIndicator` | GPS | _`N`/`S`_ | `char` | 1 | todo |
 | 5 | `EWIndicator` | GPS | _`E`/`W`_ | `char` | 1 | todo |
 | 6 | `nsatellites` | GPS | <hr> | `uint8` | 1 | Number of GPS stellites |
